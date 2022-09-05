@@ -6,8 +6,6 @@ var Jogo = function(idElemento, opcoes) {
 
 	this.tabWidth = opcoes['width'] || 640;
 	this.tabHeight = opcoes['height'] || 640;
-	this.initX = this.tab.offsetLeft;
-	this.initY = this.tab.offsetTop;
 
 	// largura e altura da unidade do tabuleiro
 	this.w = this.tabWidth / 8;
@@ -141,9 +139,9 @@ var Jogo = function(idElemento, opcoes) {
 
 	this.clique = function(event) {
 		if (this.ganhador == false) {
-
-			var posX = Math.floor((event.clientX - this.initX + window.scrollX) / this.w);
-			var posY = Math.floor((event.clientY - this.initY + window.scrollY) / this.h);
+			var initX = this.tab.offsetLeft, initY = this.tab.offsetTop;
+			var posX = Math.floor((event.clientX - initX + window.scrollX) / this.w);
+			var posY = Math.floor((event.clientY - initY + window.scrollY) / this.h);
 
 			// console.log([event.clientX, event.clientY]);
 			// console.log([posX, posY]);
