@@ -17,9 +17,6 @@ var Jogo = function(idElemento, opcoes) {
 	this.movimentos1 = 0;
 	this.movimentos2 = 0;
 
-	this.pontuacao1 = 0;
-	this.pontuacao2 = 0;
-
 	this.pos1Color = "#FF0000";
 	this.pos2Color = "#0080FF";
 
@@ -33,9 +30,16 @@ var Jogo = function(idElemento, opcoes) {
 	this.ganhador = false;
 	this.recomerAtivo = false;
 
+	this.persistencia = opcoes['persistencia'] || new Persistencia(this);
+
 	this.duracaoTransicao = 200;
-	this.maxCasas = opcoes['maxCasas'] || 1;
-	this.multiJogador = opcoes['multi'] || false;
+	this.maxCasas = opcoes['maxCasas'] || this.persistencia.get('maxCasas');
+	this.multiJogador = opcoes.hasOwnProperty('multi') ? opcoes['multi'] : this.persistencia.get('multiJogador');
+	this.partidas1 = this.persistencia.get('partidas1');
+	this.partidas2 = this.persistencia.get('partidas2');
+
+	this.pontuacao1 = this.persistencia.get('pontuacao1');
+	this.pontuacao2 = this.persistencia.get('pontuacao2');
 
 	this.pintar = function() {
 		var x, y, cor;
@@ -67,18 +71,24 @@ var Jogo = function(idElemento, opcoes) {
 		}
 	}
 
-	this.adicionarPeca = function(num, x, y) {
+	this.adicionarPeca = function(num, x, y, dama) {
 		this['posicoes' + num].push({
 			x: x,
 			y: y,
 			elemento: null,
-			dama: false,
+			dama: (dama === true) ? true : false,
 			mover: [],
 			comer: []
 		});
 	}
 
 	this.inicializarPecas = function(num) {
+		var salvo = this.persistencia.get('posicoes' + num);
+
+		if (salvo.length > 0) {
+			return this.restaurarPecas(num, salvo);
+		}
+
 		var x, y;
 
 		var pos = (num == 1 || num == '1')
@@ -94,6 +104,16 @@ var Jogo = function(idElemento, opcoes) {
 					this.adicionarPeca(num, x*2, y);
 				}
 			}
+		}
+
+		this.colocarPecasEmPosicoes(num);
+	}
+
+	this.restaurarPecas = function(num, posicoes) {
+		var i, total = posicoes.length;
+
+		for (i=0; i<total; i++) {
+			this.adicionarPeca(num, posicoes[i].x, posicoes[i].y, posicoes[i].dama);
 		}
 
 		this.colocarPecasEmPosicoes(num);
@@ -486,6 +506,8 @@ var Jogo = function(idElemento, opcoes) {
 
 			if (this.movimentos1 == 0) {
 				this.ganhador = 2;
+				this.partidas2++;
+				this.persistencia.novoJogo();
 				window.alert("Time azul ganhador");
 			} else if (this.vez == 1 && !this.multiJogador) {
 				this.pensador.jogar();
@@ -493,8 +515,12 @@ var Jogo = function(idElemento, opcoes) {
 
 			if (this.movimentos2 == 0) {
 				this.ganhador = 1;
+				this.partidas1++;
+				this.persistencia.novoJogo();
 				window.alert("Time vermelho ganhador");
 			}
+
+			this.persistencia.salvar(this);
 		}
 	}
 
@@ -504,14 +530,15 @@ var Jogo = function(idElemento, opcoes) {
 		this.inicializarPecas('2');
 		this.mostrarPontuacao();
 		this.indexSelecionado = null;
-		this.vez = 2;
-		document.getElementById('vez').innerHTML = "azul";
+		this.vez = parseInt(this.persistencia.get('vez')) == 1 ? 1 : 2;
+		document.getElementById('vez').innerHTML = this.vez == 1 ? "vermelho" : "azul";
 		this.movimentosPossiveis = [];
 		this.possivelComer = [];
 		this.ganhador = false;
 		
 		this.pendenteComer = false;
 
+		this.persistencia.salvar(this);
 		this.calcularTodosOsMovimentos();
 	}
 
@@ -597,4 +624,75 @@ var Jogo = function(idElemento, opcoes) {
 			}, jogo.duracaoTransicao);
 		}
 	};
+};
+
+var Persistencia = function() {
+	this.dados = null;
+
+	this.carregar = function() {
+		var dadosSalvos = localStorage.getItem('marlon-david/damas');
+
+		if (dadosSalvos == null) {
+			dadosSalvos = {}
+		} else {
+			dadosSalvos = JSON.parse(dadosSalvos);
+		}
+
+		this.dados = {
+			posicoes1: dadosSalvos['posicoes1'] || [],
+			posicoes2: dadosSalvos['posicoes2'] || [],
+			pontuacao1: dadosSalvos['pontuacao1'] || 0,
+			pontuacao2: dadosSalvos['pontuacao2'] || 0,
+			partidas1: dadosSalvos['partidas1'] || 0,
+			partidas2: dadosSalvos['partidas2'] || 0,
+			vez: dadosSalvos['vez'],
+			maxCasas: dadosSalvos['maxCasas'] || 1,
+			multiJogador: dadosSalvos['multiJogador'] || false
+		}
+	};
+
+	this.salvar = function(jogo) {
+		var num, i, item, total;
+
+		this.dados['posicoes1'] = [];
+		this.dados['posicoes2'] = [];
+		this.dados['pontuacao1'] = 0;
+		this.dados['pontuacao2'] = 0;
+		this.dados['vez'] = jogo.multiJogador ? jogo['vez'] : 2;
+
+		if (jogo.ganhador === false) {
+			for (num=1; num<=2; num++) {
+				this.dados['pontuacao' + num] = jogo['pontuacao' + num];
+				total = jogo['posicoes' + num].length;
+				for (i=0; i<total; i++) {
+					item = {
+						x: jogo['posicoes' + num][i].x,
+						y: jogo['posicoes' + num][i].y,
+						dama: jogo['posicoes' + num][i].dama,
+					}
+					this.dados['posicoes' + num].push(item);
+				}
+			}
+		}
+
+		this.dados['partidas1'] = jogo['partidas1'];
+		this.dados['partidas2'] = jogo['partidas2'];
+		this.dados['maxCasas'] = jogo['maxCasas'];
+		this.dados['multiJogador'] = jogo['multiJogador'];
+		localStorage.setItem('marlon-david/damas', JSON.stringify(this.dados));
+	};
+
+	this.novoJogo = function() {
+		this.dados['posicoes1'] = [];
+		this.dados['posicoes2'] = [];
+		this.dados['pontuacao1'] = 0;
+		this.dados['pontuacao2'] = 0;
+		this.dados['vez'] = 2;
+	}
+
+	this.get = function(nome) {
+		return this.dados[nome];
+	};
+
+	this.carregar();
 };

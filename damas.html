@@ -63,7 +63,7 @@
 			<div id="pontuacao"></div>
 			<div id="vez"></div>
 			<div class="botao">
-				<button onclick="novoJogo()">Novo Jogo</button>
+				<button onclick="novoJogo(true)">Novo Jogo</button>
 				<button onclick="configuracoes()">Configurações</button>
 			</div>
 			<form id="configuracoes" style="display:none">
@@ -88,7 +88,7 @@
 
 	<script type="text/javascript" src="damas.js"></script>
 	<script type="text/javascript">
-		function novoJogo() {
+		function novoJogo(redefinir) {
 			var limite = Math.min(window.innerWidth, window.innerHeight);
 			if (limite < 640) {
 				tamanho = 400;
@@ -97,11 +97,23 @@
 			} else {
 				tamanho = 800;
 			}
+			var data = new Persistencia();
+			if (redefinir === true) {
+				data.novoJogo();
+			} else {
+				if (data.get('maxCasas') == 7) {
+					document.getElementById('select-max').options[1].selected = true;
+				}
+				if (data.get('multiJogador')) {
+					document.getElementById('select-multi').options[1].selected = true;
+				}
+			}
 			new Jogo("tabuleiro", {
 				width: tamanho,
 				height: tamanho,
 				maxCasas: document.getElementById('select-max').value,
-				multi: document.getElementById('select-multi').value == "1"
+				multi: document.getElementById('select-multi').value == "1",
+				persistencia: data
 			});
 		}
 		function configuracoes() {
