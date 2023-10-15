@@ -11,9 +11,12 @@ button {
     font-size: 40px;
     padding: 10px 30px;
 }
+input[type="range"] {
+    width: 100%;
+}
 </style>
 </head>
-<body onload="startGame()">
+<body onload="startGame()" ondragstart="return false" onselectstart="return false">
 <script>
 
 const KEY_SPACE = 32;
@@ -44,15 +47,15 @@ function startGame() {
                 return;
         }
     });
-    document.body.addEventListener("keypress", function(event) {
-        switch (event.keyCode) {
-            case KEY_SPACE:
-                shoot();
-                break;
-            default:
-                return;
-        }
-    });
+    // document.body.addEventListener("keypress", function(event) {
+    //     switch (event.keyCode) {
+    //         case KEY_SPACE:
+    //             shoot();
+    //             break;
+    //         default:
+    //             return;
+    //     }
+    // });
 }
 
 var myGameArea = {
@@ -64,6 +67,7 @@ var myGameArea = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
+        this.autoshoot = true;
         this.score = 0;
         this.level = 0;
         },
@@ -134,7 +138,7 @@ function component(width, height, color, x, y, type) {
 function updateGameArea() {
     var x, height, minX, maxX, i, j;
     for (i = 0; i < myObstacles.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles[i])) {
+        if (myGamePiece.crashWith(myObstacles[i]) || myObstacles[i].isOnBottom()) {
             myGameArea.stop();
             return;
         }
@@ -172,6 +176,9 @@ function updateGameArea() {
         myObstacles[i].y += 1;
         myObstacles[i].update();
     }
+    if (myGameArea.autoshoot && everyinterval(12)) {
+        shoot();
+    }
     for (i = 0; i < shots.length; i += 1) {
         shots[i].y -= 1;
         shots[i].update();
@@ -195,10 +202,24 @@ function accelerate(n) {
 }
 
 function moveCharacter(n) {
-    var minX = 0, maxX = myGameArea.canvas.width - myGamePiece.width
+    var minX = 0, maxX = myGameArea.canvas.width - myGamePiece.width;
     myGamePiece.x += n;
     if (myGamePiece.x < minX) myGamePiece.x = minX;
     if (myGamePiece.x > maxX) myGamePiece.x = maxX;
+}
+
+function startMoving(n) {
+    myGameArea.moving = setInterval(function() {moveCharacter(n);}, 20);
+}
+function stopMoving(n) {
+    if (myGameArea.moving) {
+        clearInterval(myGameArea.moving);
+    }
+}
+
+function moveControl(value) {
+    var maxX = myGameArea.canvas.width - myGamePiece.width;
+    myGamePiece.x = (maxX * value) / 100;
 }
 
 function shoot() {
@@ -208,8 +229,14 @@ function shoot() {
 }
 </script>
 <br>
-<button onmousedown="moveCharacter(-5)">&lt;</button>
-<button onmousedown="shoot()">&bull;</button>
-<button onmousedown="moveCharacter(5)">&gt;</button>
+<!-- <button onmousedown="startMoving(-5)" onmouseup="stopMoving()" ontouchstart="startMoving(-5)">&lt;</button>
+<button onmousedown="startMoving(5)" onmouseup="stopMoving()" ontouchstart="startMoving(5)">&gt;</button> -->
+
+<input type="range" name="control" min="0" max="100" oninput="moveControl(this.value)">
+
+<!-- <div>
+    <button onmousedown="shoot()">&bull;</button>
+</div> -->
+
 </body>
 </html>
