@@ -153,10 +153,13 @@ function updateGameArea() {
         }
         for (j = 0; j < shots.length; j += 1) {
             if (myObstacles[i].crashWith(shots[j])) {
-                myObstacles.splice(i, 1);
+                if (myObstacles[i].type == "super") {
+                    myObstacles[i] = new component(20, 10, "green", myObstacles[i].x, myObstacles[i].y);
+                } else {
+                    myObstacles.splice(i, 1);
+                }
                 shots.splice(j, 1);
                 myGameArea.score += 10;
-                return;
             }
             if (shots[j].y < 0) {
                 shots.splice(j, 1);
@@ -166,11 +169,17 @@ function updateGameArea() {
     myGameArea.clear();
     myGameArea.frameNo += 1;
     var obstacleSpace = 60 - (5 * myGameArea.level);
+    var multiplier = (myGameArea.level < 1) ? 0 : 2;
+    var superObstacle = Math.floor(Math.random()*(multiplier*10)+1) == 5;
     if (myGameArea.frameNo == 1 || everyinterval(obstacleSpace)) {
         minX = 10;
         maxX = myGameArea.canvas.width - 20;
         x = Math.floor(Math.random()*(maxX-minX+1)+minX);
-        myObstacles.push(new component(20, 10, "green", x, 0));
+        if (superObstacle) {
+            myObstacles.push(new component(20, 10, "purple", x, 0, "super"));
+        } else {
+            myObstacles.push(new component(20, 10, "green", x, 0));
+        }
     }
     for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].y += 1;
