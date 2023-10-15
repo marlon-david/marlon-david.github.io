@@ -2,17 +2,26 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8">
+<title>Jogo</title>
 <style>
 canvas {
     border:1px solid #d3d3d3;
     background-color: #111111;
+    display: block;
+    margin: 0 auto;
 }
 button {
-    font-size: 40px;
-    padding: 10px 30px;
+    font-size: 20px;
+    padding: 4px 25px;
 }
 input[type="range"] {
-    width: 100%;
+    display: block;
+    width: 65%;
+    margin: 40px auto;
+}
+.text-center {
+    text-align: center;
 }
 </style>
 </head>
@@ -47,15 +56,6 @@ function startGame() {
                 return;
         }
     });
-    // document.body.addEventListener("keypress", function(event) {
-    //     switch (event.keyCode) {
-    //         case KEY_SPACE:
-    //             shoot();
-    //             break;
-    //         default:
-    //             return;
-    //     }
-    // });
 }
 
 var myGameArea = {
@@ -70,12 +70,20 @@ var myGameArea = {
         this.autoshoot = true;
         this.score = 0;
         this.level = 0;
+        this.paused = false;
+        this.gameover = false;
         },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
     stop : function() {
+        this.paused = true;
         clearInterval(this.interval);
+    },
+    resume : function() {
+        if (this.gameover) return false;
+        this.paused = false;
+        this.interval = setInterval(updateGameArea, 20);
     }
 }
 
@@ -139,6 +147,7 @@ function updateGameArea() {
     var x, height, minX, maxX, i, j;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i]) || myObstacles[i].isOnBottom()) {
+            myGameArea.gameover = true;
             myGameArea.stop();
             return;
         }
@@ -158,15 +167,6 @@ function updateGameArea() {
     myGameArea.frameNo += 1;
     var obstacleSpace = 60 - (5 * myGameArea.level);
     if (myGameArea.frameNo == 1 || everyinterval(obstacleSpace)) {
-        // x = myGameArea.canvas.width;
-        // minHeight = 20;
-        // maxHeight = 200;
-        // height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-        // minGap = 50;
-        // maxGap = 200;
-        // gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-        // myObstacles.push(new component(10, height, "green", x, 0));
-        // myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
         minX = 10;
         maxX = myGameArea.canvas.width - 20;
         x = Math.floor(Math.random()*(maxX-minX+1)+minX);
@@ -197,27 +197,16 @@ function everyinterval(n) {
     return false;
 }
 
-function accelerate(n) {
-    myGamePiece.gravity = n;
-}
-
 function moveCharacter(n) {
+    if (myGameArea.paused) return false;
     var minX = 0, maxX = myGameArea.canvas.width - myGamePiece.width;
     myGamePiece.x += n;
     if (myGamePiece.x < minX) myGamePiece.x = minX;
     if (myGamePiece.x > maxX) myGamePiece.x = maxX;
 }
 
-function startMoving(n) {
-    myGameArea.moving = setInterval(function() {moveCharacter(n);}, 20);
-}
-function stopMoving(n) {
-    if (myGameArea.moving) {
-        clearInterval(myGameArea.moving);
-    }
-}
-
 function moveControl(value) {
+    if (myGameArea.paused) return false;
     var maxX = myGameArea.canvas.width - myGamePiece.width;
     myGamePiece.x = (maxX * value) / 100;
 }
@@ -227,16 +216,22 @@ function shoot() {
         y = myGamePiece.y;
     shots.push(new component(1, 10, "yellow", x, y));
 }
+
+function pause() {
+    if (myGameArea.paused) {
+        myGameArea.resume();
+    } else {
+        myGameArea.stop();
+    }
+}
 </script>
 <br>
-<!-- <button onmousedown="startMoving(-5)" onmouseup="stopMoving()" ontouchstart="startMoving(-5)">&lt;</button>
-<button onmousedown="startMoving(5)" onmouseup="stopMoving()" ontouchstart="startMoving(5)">&gt;</button> -->
+
+<div class="text-center">
+    <button onclick="pause()">Pause</button>
+</div>
 
 <input type="range" name="control" min="0" max="100" oninput="moveControl(this.value)">
-
-<!-- <div>
-    <button onmousedown="shoot()">&bull;</button>
-</div> -->
 
 </body>
 </html>
