@@ -145,13 +145,13 @@ function component(width, height, color, x, y, type) {
 
 function updateGameArea() {
     var x, height, minX, maxX, i, j;
-    for (i = 0; i < myObstacles.length; i += 1) {
+    for (i = myObstacles.length-1; i >= 0; i--) {
         if (myGamePiece.crashWith(myObstacles[i]) || myObstacles[i].isOnBottom()) {
             myGameArea.gameover = true;
             myGameArea.stop();
             return;
         }
-        for (j = 0; j < shots.length; j += 1) {
+        for (j = shots.length-1; j >= 0; j--) {
             if (myObstacles[i].crashWith(shots[j])) {
                 if (myObstacles[i].type == "super") {
                     myObstacles[i] = new component(20, 10, "green", myObstacles[i].x, myObstacles[i].y);
@@ -160,6 +160,7 @@ function updateGameArea() {
                 }
                 shots.splice(j, 1);
                 myGameArea.score += 10;
+                break;
             }
             if (shots[j].y < 0) {
                 shots.splice(j, 1);
