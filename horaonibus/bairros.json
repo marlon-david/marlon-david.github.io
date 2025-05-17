@@ -1,0 +1,92 @@
+{
+    "bairros": [
+        {
+            "chave": "b1",
+            "nome": "Anchieta \/ CDHU"
+        },
+        {
+            "chave": "b2",
+            "nome": "Boa Esperan\u00e7a"
+        },
+        {
+            "chave": "b3",
+            "nome": "Brasil"
+        },
+        {
+            "chave": "b4",
+            "nome": "Cohab"
+        },
+        {
+            "chave": "b5",
+            "nome": "Distrito Industrial I"
+        },
+        {
+            "chave": "b6",
+            "nome": "Distrito Industrial II"
+        },
+        {
+            "chave": "b7",
+            "nome": "Eldorado \/ O. Quagliato"
+        },
+        {
+            "chave": "b8",
+            "nome": "Fatec \/ Unesp \/ Brilhante"
+        },
+        {
+            "chave": "b9",
+            "nome": "Itajubi"
+        },
+        {
+            "chave": "b10",
+            "nome": "Itamaraty"
+        },
+        {
+            "chave": "b11",
+            "nome": "Jardim Bandeirantes"
+        },
+        {
+            "chave": "b12",
+            "nome": "Jardim Paris"
+        },
+        {
+            "chave": "b13",
+            "nome": "Lar Santo Ant\u00f4nio \/ Guapor\u00e9"
+        },
+        {
+            "chave": "b14",
+            "nome": "Margarida \/ Soares \/ Quebec"
+        },
+        {
+            "chave": "b15",
+            "nome": "Matilde \/ F\u00f3rum"
+        },
+        {
+            "chave": "b16",
+            "nome": "Minas Gerais"
+        },
+        {
+            "chave": "b17",
+            "nome": "Musa \/ Pacheco Chaves"
+        },
+        {
+            "chave": "b18",
+            "nome": "Paineiras"
+        },
+        {
+            "chave": "b19",
+            "nome": "Porto de Areia \/ Estrada da CESP"
+        },
+        {
+            "chave": "b20",
+            "nome": "Santos Dumont"
+        },
+        {
+            "chave": "b21",
+            "nome": "S\u00e3o Domingos \/ Fapi"
+        },
+        {
+            "chave": "b22",
+            "nome": "Veredas"
+        }
+    ]
+}

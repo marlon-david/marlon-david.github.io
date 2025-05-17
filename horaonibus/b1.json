@@ -1,0 +1,465 @@
+{
+    "obs": null,
+    "util": [
+        {
+            "bairro": "06:00",
+            "terminal": "06:00"
+        },
+        {
+            "bairro": "06:20",
+            "terminal": "06:20"
+        },
+        {
+            "bairro": "06:40",
+            "terminal": "06:40"
+        },
+        {
+            "bairro": "07:00",
+            "terminal": "07:00"
+        },
+        {
+            "bairro": "07:20",
+            "terminal": "07:20"
+        },
+        {
+            "bairro": "07:40",
+            "terminal": "07:40"
+        },
+        {
+            "bairro": "08:00",
+            "terminal": "08:00"
+        },
+        {
+            "bairro": "08:20",
+            "terminal": "08:20"
+        },
+        {
+            "bairro": "08:40",
+            "terminal": "08:40"
+        },
+        {
+            "bairro": "09:00",
+            "terminal": "09:00"
+        },
+        {
+            "bairro": "09:20",
+            "terminal": "09:20"
+        },
+        {
+            "bairro": "09:40",
+            "terminal": "09:40"
+        },
+        {
+            "bairro": "10:00",
+            "terminal": "10:00"
+        },
+        {
+            "bairro": "10:20",
+            "terminal": "10:20"
+        },
+        {
+            "bairro": "10:40",
+            "terminal": "10:40"
+        },
+        {
+            "bairro": "11:00",
+            "terminal": "11:00"
+        },
+        {
+            "bairro": "11:20",
+            "terminal": "11:20"
+        },
+        {
+            "bairro": "11:40",
+            "terminal": "11:40"
+        },
+        {
+            "bairro": "12:00",
+            "terminal": "12:00"
+        },
+        {
+            "bairro": "12:20",
+            "terminal": "12:20"
+        },
+        {
+            "bairro": "12:40",
+            "terminal": "12:40"
+        },
+        {
+            "bairro": "13:00",
+            "terminal": "13:00"
+        },
+        {
+            "bairro": "13:20",
+            "terminal": "13:20"
+        },
+        {
+            "bairro": "13:40",
+            "terminal": "13:40"
+        },
+        {
+            "bairro": "14:00",
+            "terminal": "14:00"
+        },
+        {
+            "bairro": "14:20",
+            "terminal": "14:20"
+        },
+        {
+            "bairro": "14:40",
+            "terminal": "14:40"
+        },
+        {
+            "bairro": "15:00",
+            "terminal": "15:00"
+        },
+        {
+            "bairro": "15:20",
+            "terminal": "15:20"
+        },
+        {
+            "bairro": "15:40",
+            "terminal": "15:40"
+        },
+        {
+            "bairro": "16:00",
+            "terminal": "16:00"
+        },
+        {
+            "bairro": "16:20",
+            "terminal": "16:20"
+        },
+        {
+            "bairro": "16:40",
+            "terminal": "16:40"
+        },
+        {
+            "bairro": "17:00",
+            "terminal": "17:00"
+        },
+        {
+            "bairro": "17:20",
+            "terminal": "17:20"
+        },
+        {
+            "bairro": "17:40",
+            "terminal": "17:40"
+        },
+        {
+            "bairro": "18:00",
+            "terminal": "18:00"
+        },
+        {
+            "bairro": "18:20",
+            "terminal": "18:20"
+        },
+        {
+            "bairro": "18:40",
+            "terminal": "18:40"
+        },
+        {
+            "bairro": "19:00",
+            "terminal": "19:00"
+        },
+        {
+            "bairro": "19:20",
+            "terminal": "19:20"
+        },
+        {
+            "bairro": "19:40",
+            "terminal": "19:40"
+        },
+        {
+            "bairro": "20:00",
+            "terminal": "20:00"
+        },
+        {
+            "bairro": "20:20",
+            "terminal": "20:40"
+        },
+        {
+            "bairro": "21:00",
+            "terminal": "21:20"
+        },
+        {
+            "bairro": "21:40",
+            "terminal": "22:00"
+        },
+        {
+            "bairro": "22:20",
+            "terminal": "22:40"
+        },
+        {
+            "bairro": "23:00",
+            "terminal": "23:20"
+        },
+        {
+            "bairro": "23:40",
+            "terminal": "-"
+        }
+    ],
+    "sabado": [
+        {
+            "bairro": "06:00",
+            "terminal": "06:00"
+        },
+        {
+            "bairro": "06:20",
+            "terminal": "06:20"
+        },
+        {
+            "bairro": "06:40",
+            "terminal": "06:40"
+        },
+        {
+            "bairro": "07:00",
+            "terminal": "07:00"
+        },
+        {
+            "bairro": "07:20",
+            "terminal": "07:20"
+        },
+        {
+            "bairro": "07:40",
+            "terminal": "07:40"
+        },
+        {
+            "bairro": "08:00",
+            "terminal": "08:00"
+        },
+        {
+            "bairro": "08:20",
+            "terminal": "08:20"
+        },
+        {
+            "bairro": "08:40",
+            "terminal": "08:40"
+        },
+        {
+            "bairro": "09:00",
+            "terminal": "09:00"
+        },
+        {
+            "bairro": "09:20",
+            "terminal": "09:20"
+        },
+        {
+            "bairro": "09:40",
+            "terminal": "09:40"
+        },
+        {
+            "bairro": "10:00",
+            "terminal": "10:00"
+        },
+        {
+            "bairro": "10:20",
+            "terminal": "10:20"
+        },
+        {
+            "bairro": "10:40",
+            "terminal": "10:40"
+        },
+        {
+            "bairro": "11:00",
+            "terminal": "11:00"
+        },
+        {
+            "bairro": "11:20",
+            "terminal": "11:20"
+        },
+        {
+            "bairro": "11:40",
+            "terminal": "11:40"
+        },
+        {
+            "bairro": "12:00",
+            "terminal": "12:00"
+        },
+        {
+            "bairro": "12:20",
+            "terminal": "12:20"
+        },
+        {
+            "bairro": "12:40",
+            "terminal": "12:40"
+        },
+        {
+            "bairro": "13:00",
+            "terminal": "13:00"
+        },
+        {
+            "bairro": "13:20",
+            "terminal": "13:40"
+        },
+        {
+            "bairro": "14:00",
+            "terminal": "14:20"
+        },
+        {
+            "bairro": "14:40",
+            "terminal": "15:00"
+        },
+        {
+            "bairro": "15:20",
+            "terminal": "15:40"
+        },
+        {
+            "bairro": "16:00",
+            "terminal": "16:20"
+        },
+        {
+            "bairro": "16:40",
+            "terminal": "17:00"
+        },
+        {
+            "bairro": "17:20",
+            "terminal": "17:40"
+        },
+        {
+            "bairro": "18:00",
+            "terminal": "18:20"
+        },
+        {
+            "bairro": "18:40",
+            "terminal": "19:00"
+        },
+        {
+            "bairro": "19:20",
+            "terminal": "19:40"
+        },
+        {
+            "bairro": "20:00",
+            "terminal": "20:20"
+        },
+        {
+            "bairro": "20:40",
+            "terminal": "21:00"
+        },
+        {
+            "bairro": "21:20",
+            "terminal": "21:40"
+        },
+        {
+            "bairro": "22:00",
+            "terminal": "22:20"
+        },
+        {
+            "bairro": "22:40",
+            "terminal": "23:20"
+        },
+        {
+            "bairro": "23:40",
+            "terminal": "-"
+        }
+    ],
+    "domingo": [
+        {
+            "bairro": "06:00",
+            "terminal": "06:20"
+        },
+        {
+            "bairro": "06:40",
+            "terminal": "07:00"
+        },
+        {
+            "bairro": "07:20",
+            "terminal": "07:40"
+        },
+        {
+            "bairro": "08:00",
+            "terminal": "08:20"
+        },
+        {
+            "bairro": "08:40",
+            "terminal": "09:00"
+        },
+        {
+            "bairro": "09:20",
+            "terminal": "09:40"
+        },
+        {
+            "bairro": "10:00",
+            "terminal": "10:20"
+        },
+        {
+            "bairro": "10:40",
+            "terminal": "11:00"
+        },
+        {
+            "bairro": "11:20",
+            "terminal": "11:40"
+        },
+        {
+            "bairro": "12:00",
+            "terminal": "12:20"
+        },
+        {
+            "bairro": "12:40",
+            "terminal": "13:00"
+        },
+        {
+            "bairro": "13:20",
+            "terminal": "13:40"
+        },
+        {
+            "bairro": "14:00",
+            "terminal": "14:20"
+        },
+        {
+            "bairro": "14:40",
+            "terminal": "15:00"
+        },
+        {
+            "bairro": "15:20",
+            "terminal": "15:40"
+        },
+        {
+            "bairro": "16:00",
+            "terminal": "16:20"
+        },
+        {
+            "bairro": "16:40",
+            "terminal": "17:00"
+        },
+        {
+            "bairro": "17:20",
+            "terminal": "17:40"
+        },
+        {
+            "bairro": "18:00",
+            "terminal": "18:20"
+        },
+        {
+            "bairro": "18:40",
+            "terminal": "19:00"
+        },
+        {
+            "bairro": "19:20",
+            "terminal": "19:40"
+        },
+        {
+            "bairro": "20:00",
+            "terminal": "20:20"
+        },
+        {
+            "bairro": "20:40",
+            "terminal": "21:00"
+        },
+        {
+            "bairro": "21:20",
+            "terminal": "21:40"
+        },
+        {
+            "bairro": "22:00",
+            "terminal": "22:20"
+        },
+        {
+            "bairro": "22:40",
+            "terminal": "23:20"
+        },
+        {
+            "bairro": "23:40",
+            "terminal": "-"
+        }
+    ]
+}

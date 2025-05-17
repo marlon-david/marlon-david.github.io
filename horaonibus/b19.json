@@ -1,0 +1,40 @@
+{
+    "obs": null,
+    "util": [
+        {
+            "bairro": "-",
+            "terminal": "07:40"
+        },
+        {
+            "bairro": "08:00",
+            "terminal": "-"
+        },
+        {
+            "bairro": "-",
+            "terminal": "17:15"
+        },
+        {
+            "bairro": "17:35",
+            "terminal": "-"
+        }
+    ],
+    "sabado": [
+        {
+            "bairro": "-",
+            "terminal": "08:10"
+        },
+        {
+            "bairro": "08:30",
+            "terminal": "-"
+        },
+        {
+            "bairro": "-",
+            "terminal": "17:15"
+        },
+        {
+            "bairro": "17:35",
+            "terminal": "-"
+        }
+    ],
+    "domingo": []
+}

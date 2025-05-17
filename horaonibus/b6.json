@@ -1,0 +1,108 @@
+{
+    "obs": null,
+    "util": [
+        {
+            "bairro": "-",
+            "terminal": "06:00"
+        },
+        {
+            "bairro": "06:20",
+            "terminal": "07:00"
+        },
+        {
+            "bairro": "07:20",
+            "terminal": "07:40"
+        },
+        {
+            "bairro": "08:00",
+            "terminal": "08:20"
+        },
+        {
+            "bairro": "08:40",
+            "terminal": "09:40"
+        },
+        {
+            "bairro": "10:00",
+            "terminal": "11:00"
+        },
+        {
+            "bairro": "11:20",
+            "terminal": "11:20"
+        },
+        {
+            "bairro": "11:40",
+            "terminal": "13:00"
+        },
+        {
+            "bairro": "13:20",
+            "terminal": "15:00"
+        },
+        {
+            "bairro": "15:20",
+            "terminal": "16:20"
+        },
+        {
+            "bairro": "16:40",
+            "terminal": "17:00"
+        },
+        {
+            "bairro": "17:20",
+            "terminal": "17:20"
+        },
+        {
+            "bairro": "17:40",
+            "terminal": "17:40"
+        },
+        {
+            "bairro": "18:00",
+            "terminal": "18:20"
+        },
+        {
+            "bairro": "18:40",
+            "terminal": "19:00"
+        },
+        {
+            "bairro": "19:20",
+            "terminal": "-"
+        }
+    ],
+    "sabado": [
+        {
+            "bairro": "-",
+            "terminal": "06:00"
+        },
+        {
+            "bairro": "06:20",
+            "terminal": "07:00"
+        },
+        {
+            "bairro": "07:20",
+            "terminal": "07:40"
+        },
+        {
+            "bairro": "08:00",
+            "terminal": "08:20"
+        },
+        {
+            "bairro": "08:40",
+            "terminal": "09:40"
+        },
+        {
+            "bairro": "10:00",
+            "terminal": "11:00"
+        },
+        {
+            "bairro": "11:20",
+            "terminal": "11:20"
+        },
+        {
+            "bairro": "11:40",
+            "terminal": "13:00"
+        },
+        {
+            "bairro": "13:20",
+            "terminal": "-"
+        }
+    ],
+    "domingo": []
+}
